@@ -128,13 +128,21 @@ GPIO.setup(RelayA, GPIO.OUT, initial=GPIO.HIGH)
 time.sleep(1)		
 
 #load model
+#CPU
+net = cv2.dnn_DetectionModel('/home/auo/AGV/cfg/custom-yolov4-tiny_14.cfg', '/home/auo/AGV/model/custom-yolov4-tiny_14_69.weights')
+net.setInputSize(416, 416)
+net.setInputScale(1.0 / 255)
+net.setInputSwapRB(True)
+#GPU
+'''
 net = cv2.dnn_DetectionModel('/home/auo/AGV/cfg/custom-yolov4-tiny_14.cfg', '/home/auo/AGV/model/custom-yolov4-tiny_14_69.weights')
 net.setInputSize(416, 416)
 net.setPreferableBackend(cv2.dnn.DNN_BACKEND_CUDA)
 net.setPreferableTarget(cv2.dnn.DNN_TARGET_CUDA)
 net.setInputScale(1.0 / 255)
 net.setInputSwapRB(True)
-
+'''
+#camera capture
 vc = cv2.VideoCapture(0)
 vc.set(cv2.CAP_PROP_FRAME_WIDTH, _width)
 vc.set(cv2.CAP_PROP_FRAME_HEIGHT, _height)
