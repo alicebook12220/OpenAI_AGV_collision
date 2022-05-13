@@ -197,7 +197,7 @@ cv2.namedWindow(_Winname)
 cv2.moveWindow(_Winname,screen[0].x -1 ,screen[0].y -1)
 
 
-rtsp() #Start RTSP Server
+#rtsp() #Start RTSP Server
 
 print("Start Detect")  
 while(1):
@@ -371,7 +371,7 @@ while(1):
 			GPIO.output(CH1, GPIO.HIGH)
 			GPIO.output(CH2, GPIO.HIGH)
 		
-		out_send.write(frame) #output to rtsp stream
+		#out_send.write(frame) #output to rtsp stream
 		cv2.imshow(_Winname, frame)
 		cv2.waitKey(1)
 	else:
